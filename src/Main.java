@@ -1,15 +1,28 @@
+import controller.StudentController;
+import controller.TeacherController;
+import model.Student;
+import model.Teachers;
+
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        new StudentController()
+                .sendOnConsole(List.of(new Student(1, "Sasha", "Ivanov"),
+                        new Student(1, "Ira", "Ivanova")));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        new TeacherController().createTeacher("Антон", "Макаренко");
+        new TeacherController().createTeacher("Константин", "Ушинский");
+        new TeacherController().sendOnConsole(Teachers.teachers);
+        new TeacherController().redactTeatcher(2, "Василий", "Сухамлинский");
+        new TeacherController().sendOnConsole(Teachers.teachers);
     }
+
+//    private static List<Student> getStudents() {
+//        Student s1 = new Student(1, "Sasha", "Ivanov");
+//        Student s2 = new Student(1, "Ira", "Ivanova");
+//        return List.of(s1, s2);
+//    }
 }
